@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div style="text-align: left;">
+    <h3>{{ user_data['nome_usual'] }}</h3>
+    <img class="mt-5" src="https://suap.ifrn.edu.br{{ user_data['url_foto_150x200'] }}" alt="foto">
+    
+    <table class="table table-stripper" style="margin-top: 10px;">
+      {% for field in user_data %}
+        <tr>
+          <th>{{ field }}</th>
+          <td>{{ user_data[field] }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+
+    {% include 'boletim.html' %} 
+
+    <p><a href="{{url_for('logout')}}">Logout</a></p>
+  </div>
+{% endblock %}
